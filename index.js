@@ -15,6 +15,16 @@ const movies = require("./routes/movies");
 const express = require("express");
 const app = express();
 
+process.on("uncaughtException", (ex) => {
+  winston.error(ex.message, ex);
+  process.exit(1);
+});
+
+process.on("unhandledRejection", (ex) => {
+  winston.error(ex.message, ex);
+  process.exit(1);
+});
+
 winston.configure({
   transports: [new winston.transports.File({ filename: "logfile.log" })],
 });
