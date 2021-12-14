@@ -1,8 +1,6 @@
 const request = require("supertest");
-const mongoose = require("mongoose");
 const { User } = require("../../models/user");
 const { Genre } = require("../../models/genre");
-const { exceptions } = require("winston");
 let server;
 
 describe("/api/genres", () => {
