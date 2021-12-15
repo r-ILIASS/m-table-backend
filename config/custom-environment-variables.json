@@ -1,3 +1,4 @@
 {
-  "jwtPrivateKey": "movies_jwtPrivateKey"
+  "jwtPrivateKey": "movies_jwtPrivateKey",
+  "db": "movies_db"
 }
