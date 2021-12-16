@@ -15,10 +15,6 @@ const logger = createLogger({
   ),
   defaultMeta: { service: "moviesBackend" },
   transports: [
-    //
-    // - Write to all logs with level `info` and below to `quick-start-combined.log`.
-    // - Write all logs error (and below) to `quick-start-error.log`.
-    //
     new transports.File({ filename: "errorLogs.log", level: "error" }),
     new transports.File({ filename: "logfile.log" }),
     new transports.MongoDB({
@@ -30,7 +26,15 @@ const logger = createLogger({
 });
 
 module.exports = function () {
-  // Handling uncaughtExceptions
+  process.on("uncaughtException", (ex) => {
+    console.log("WE GOT AN UNCAUGHT EXCEPTION");
+    logger.log("error", ex.message, ex);
+  });
+
+  process.on("unhandledRejection", (ex) => {
+    console.log("WE GOT AN UNHANDLED REJECTION");
+    logger.log("error", ex.message, ex);
+  });
 };
 
 module.exports.logger = logger;
