@@ -47,6 +47,7 @@ router.put("/:id", async (req, res) => {
       },
       numberInStock: req.body.numberInStock,
       dailyRentalRate: req.body.dailyRentalRate,
+      isLiked: req.body.isLiked,
     },
     { new: true }
   );
